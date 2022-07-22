@@ -8,17 +8,22 @@ export const useAppNavigate = () => {
         navigate("/");
     };
 
-    // const goToSignUp = () => {
-    //     navigate("/criar-conta/");
-    // };
+    const goToSignUpPage = () => {
+        navigate("/signup");
+    };
 
-    // const goToTasks = () => {
-    //     navigate(`/tarefas/1`);
-    // };
+    const goToFeedPage = () =>{
+        navigate(`/feed`);
+    }
 
-    // const goToSelectedTasksList = (tasklistId) => {
-    //     navigate(`/tarefas/${tasklistId}`);
-    // };
+    const goToPostPage = (id) =>{
+        navigate(`/post/${id}`);
+    }
 
-    return { goToLoginPage };
+    const goBack = () =>{
+        navigate(-1);
+    }
+
+
+    return { goToLoginPage, goToSignUpPage, goToPostPage, goToFeedPage, goBack };
 };
