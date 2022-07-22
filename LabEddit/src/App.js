@@ -1,8 +1,11 @@
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./routes/router";
+
 const App = () => {
   return (
-    <>
-      <h1>LabEddit</h1>
-    </>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
 }
 
