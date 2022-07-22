@@ -1,3 +1,4 @@
+import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import { useAppNavigate } from "../../routes/coordinator";
 
 const SignUpPage = () => {
@@ -5,7 +6,7 @@ const SignUpPage = () => {
 
     return (
         <>
-            <h1>SignUpPage</h1>
+            <SignUpForm/>
             <button onClick={() => { goToFeedPage() }}>Feed Page</button>
         </>
     );

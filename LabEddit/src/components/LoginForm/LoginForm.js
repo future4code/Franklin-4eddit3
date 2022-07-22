@@ -1,5 +1,5 @@
 import useForm from "../../hooks/useForm";
-import React, { useState } from "react";
+import React from "react";
 
 function LoginForm() {
     const [form, handleInputChange, clear] = useForm({ email: "", password: "" })
@@ -7,6 +7,7 @@ function LoginForm() {
     const onSubmitForm = (event) => {
         event.preventDefault()
         console.log(form)
+        clear();
     }
 
     return (
