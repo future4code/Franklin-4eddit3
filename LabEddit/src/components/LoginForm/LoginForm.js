@@ -22,7 +22,7 @@ function LoginForm() {
                         value={form.email}
                         onChange={handleInputChange}
                         label={"E-mail"}
-                        placeholder={"Nome"}
+                        placeholder={"E-mail"}
                         required
                         type={"email"} />
                     <StyleInput
