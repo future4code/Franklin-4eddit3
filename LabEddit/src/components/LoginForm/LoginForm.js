@@ -30,7 +30,7 @@ function LoginForm() {
                         value={form.password}
                         onChange={handleInputChange}
                         label={"Senha"}
-                        placeholder={"Nome"}
+                        placeholder={"Senha"}
                         required
                         type={"password"} />
                 </StyleDivInput>
