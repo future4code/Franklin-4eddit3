@@ -1,5 +1,8 @@
 import useForm from "../../hooks/useForm";
 import React from "react";
+import { StyleInput } from "./styled";
+import { StyleButton } from './styled'
+import { StyleDivInput } from './styled'
 
 function LoginForm() {
     const [form, handleInputChange, clear] = useForm({ email: "", password: "" })
@@ -13,24 +16,26 @@ function LoginForm() {
     return (
         <div>
             <form onSubmit={onSubmitForm}>
-                <div>
-                    <input
+                <StyleDivInput>
+                    <StyleInput
                         name={"email"}
                         value={form.email}
                         onChange={handleInputChange}
                         label={"E-mail"}
+                        placeholder={"Nome"}
                         required
                         type={"email"} />
-                    <input
+                    <StyleInput
                         name={"password"}
                         value={form.password}
                         onChange={handleInputChange}
                         label={"Senha"}
+                        placeholder={"Nome"}
                         required
                         type={"password"} />
-                </div>
+                </StyleDivInput>
 
-                <button type="submit" >Continuar</button>
+                <StyleButton type="submit" >Continuar</StyleButton>
 
             </form>
         </div>
