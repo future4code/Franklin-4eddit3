@@ -4,7 +4,7 @@ export const StyleDivInput = styled.div`
     flex-direction: column;
     display: flex;
     gap: 10px;
-    margin-top: 50px;
+    margin-top: 60px;
 `
 
 export const StyleInput = styled.input`
