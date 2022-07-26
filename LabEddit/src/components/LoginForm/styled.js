@@ -23,7 +23,7 @@ export const StyleInput = styled.input`
   font-size: 14px;
   padding-left: 14px;
   ::placeholder {
-    color: #323941;
+    color: #9fa6b3;
     font-weight: 400;
   }
   &:focus {
