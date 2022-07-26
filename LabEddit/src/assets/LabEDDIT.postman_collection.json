@@ -1,0 +1,419 @@
+{
+	"info": {
+		"_postman_id": "c19a8723-6020-474c-8b50-0c2a5d9d686e",
+		"name": "LabEDDIT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21179615"
+	},
+	"item": [
+		{
+			"name": "cadastrar-se",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Dany\",\r\n\t\"email\": \"dany.teste@gmail.com\",\r\n\t\"password\": \"dany.password\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url-api-labeddit}}/users/signup",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"dany.teste@gmail.com\",\r\n\t\"password\": \"dany.password\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url-api-labeddit}}/users/login",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postagens",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2MDBlOTEwLTZhOTYtNDFmOC1iMTY4LTg1MjJjY2M5MzliYSIsInJvbGUiOiJHVUVTVCIsImlhdCI6MTY1ODc5NDY1OCwiZXhwIjoxNjU4ODM3ODU4fQ.MEuTjRLFI3buiK5YbEXFome8PdaUtNmIuqUvF9reA-g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url-api-labeddit}}/posts",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comentários",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2MDBlOTEwLTZhOTYtNDFmOC1iMTY4LTg1MjJjY2M5MzliYSIsInJvbGUiOiJHVUVTVCIsImlhdCI6MTY1ODc5NDY1OCwiZXhwIjoxNjU4ODM3ODU4fQ.MEuTjRLFI3buiK5YbEXFome8PdaUtNmIuqUvF9reA-g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url-api-labeddit}}/posts/:id/comments",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"posts",
+						":id",
+						"comments"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6503d483-68ee-4b96-b399-44cbb5e2041b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criar postagem",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2MDBlOTEwLTZhOTYtNDFmOC1iMTY4LTg1MjJjY2M5MzliYSIsInJvbGUiOiJHVUVTVCIsImlhdCI6MTY1ODc5NDY1OCwiZXhwIjoxNjU4ODM3ODU4fQ.MEuTjRLFI3buiK5YbEXFome8PdaUtNmIuqUvF9reA-g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"title\": \"Garçom\",\r\n\t\"body\": \"aqui! nessa mesa de bar...\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url-api-labeddit}}/posts",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "criar comentario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2MDBlOTEwLTZhOTYtNDFmOC1iMTY4LTg1MjJjY2M5MzliYSIsInJvbGUiOiJHVUVTVCIsImlhdCI6MTY1ODc5NDY1OCwiZXhwIjoxNjU4ODM3ODU4fQ.MEuTjRLFI3buiK5YbEXFome8PdaUtNmIuqUvF9reA-g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"body\": \"Natasha, Buonasera Natasha\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url-api-labeddit}}/posts/:id/comments",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"posts",
+						":id",
+						"comments"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6503d483-68ee-4b96-b399-44cbb5e2041b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "voto em post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2MDBlOTEwLTZhOTYtNDFmOC1iMTY4LTg1MjJjY2M5MzliYSIsInJvbGUiOiJHVUVTVCIsImlhdCI6MTY1ODc5NDY1OCwiZXhwIjoxNjU4ODM3ODU4fQ.MEuTjRLFI3buiK5YbEXFome8PdaUtNmIuqUvF9reA-g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"direction\": 1\r\n}"
+				},
+				"url": {
+					"raw": "{{url-api-labeddit}}/posts/:id/votes",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"posts",
+						":id",
+						"votes"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "9b0f4fba-d67e-401e-8af8-7a95502a7cbf"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "voto em comentario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2MDBlOTEwLTZhOTYtNDFmOC1iMTY4LTg1MjJjY2M5MzliYSIsInJvbGUiOiJHVUVTVCIsImlhdCI6MTY1ODc5NDY1OCwiZXhwIjoxNjU4ODM3ODU4fQ.MEuTjRLFI3buiK5YbEXFome8PdaUtNmIuqUvF9reA-g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"direction\": 1\r\n}"
+				},
+				"url": {
+					"raw": "{{url-api-labeddit}}/comments/:id/votes",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"comments",
+						":id",
+						"votes"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "b42bb516-09c4-45f7-b378-f4b80bb8b4cd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "alterar voto post",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2MDBlOTEwLTZhOTYtNDFmOC1iMTY4LTg1MjJjY2M5MzliYSIsInJvbGUiOiJHVUVTVCIsImlhdCI6MTY1ODc5NDY1OCwiZXhwIjoxNjU4ODM3ODU4fQ.MEuTjRLFI3buiK5YbEXFome8PdaUtNmIuqUvF9reA-g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"direction\": -1\r\n}"
+				},
+				"url": {
+					"raw": "{{url-api-labeddit}}/posts/:id/votes",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"posts",
+						":id",
+						"votes"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6503d483-68ee-4b96-b399-44cbb5e2041b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "alterar voto comentario",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2MDBlOTEwLTZhOTYtNDFmOC1iMTY4LTg1MjJjY2M5MzliYSIsInJvbGUiOiJHVUVTVCIsImlhdCI6MTY1ODc5NDY1OCwiZXhwIjoxNjU4ODM3ODU4fQ.MEuTjRLFI3buiK5YbEXFome8PdaUtNmIuqUvF9reA-g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"direction\": -1\r\n}"
+				},
+				"url": {
+					"raw": "{{url-api-labeddit}}/comments/:id/votes",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"comments",
+						":id",
+						"votes"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "b42bb516-09c4-45f7-b378-f4b80bb8b4cd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletar voto post",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2MDBlOTEwLTZhOTYtNDFmOC1iMTY4LTg1MjJjY2M5MzliYSIsInJvbGUiOiJHVUVTVCIsImlhdCI6MTY1ODc5NDY1OCwiZXhwIjoxNjU4ODM3ODU4fQ.MEuTjRLFI3buiK5YbEXFome8PdaUtNmIuqUvF9reA-g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url-api-labeddit}}/posts/:id/votes",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"posts",
+						":id",
+						"votes"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6503d483-68ee-4b96-b399-44cbb5e2041b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletar voto em comentario",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA2MDBlOTEwLTZhOTYtNDFmOC1iMTY4LTg1MjJjY2M5MzliYSIsInJvbGUiOiJHVUVTVCIsImlhdCI6MTY1ODc5NDY1OCwiZXhwIjoxNjU4ODM3ODU4fQ.MEuTjRLFI3buiK5YbEXFome8PdaUtNmIuqUvF9reA-g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url-api-labeddit}}/comments/:id/votes",
+					"host": [
+						"{{url-api-labeddit}}"
+					],
+					"path": [
+						"comments",
+						":id",
+						"votes"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "b42bb516-09c4-45f7-b378-f4b80bb8b4cd"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
