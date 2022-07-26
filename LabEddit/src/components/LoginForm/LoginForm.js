@@ -16,10 +16,9 @@ function LoginForm() {
     event.preventDefault();
     axios
       .post(`${BASE_URL}/users/login`, form)
-
       .then((response) => {
+        localStorage.setItem('token', response.data.token)
         swal("Login realizado com sucesso");
-        console.log(form);
         clear();
         goToFeedPage();
       })

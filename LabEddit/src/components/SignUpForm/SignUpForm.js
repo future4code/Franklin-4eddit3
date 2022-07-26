@@ -1,4 +1,8 @@
+import axios from "axios";
+import swal from "sweetalert";
+import { BASE_URL } from "../../constants/urls";
 import useForm from "../../hooks/useForm";
+import { useAppNavigate } from "../../routes/coordinator";
 import {
   StyleInput,
   StyleButton,
@@ -13,15 +17,25 @@ import {
 
 function SignUpForm() {
   const [form, handleInputChange, clear] = useForm({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
-
+  const { goToFeedPage } = useAppNavigate();
+  
   const onSubmitForm = (event) => {
     event.preventDefault();
-    console.log(form);
-    clear();
+    axios
+      .post(`${BASE_URL}/users/signup`, form)
+      .then((response) => {
+        localStorage.setItem('token', response.data.token)
+        swal("Cadastro realizado com sucesso");
+        clear();
+        goToFeedPage();
+      })
+      .catch((error) => {
+        swal("Email já cadastrado no sistema, por favor utilize outro");
+      });
   };
 
   return (
@@ -29,13 +43,13 @@ function SignUpForm() {
       <form onSubmit={onSubmitForm}>
         <StyleDivInput>
           <StyleInput
-            name={"name"}
-            value={form.name}
+            name={"username"}
+            value={form.username}
             onChange={handleInputChange}
-            label={"nome"}
+            label={"username"}
             placeholder={"Nome de usuário"}
             required
-            type={"name"}
+            type={"username"}
           />
           <StyleInput
             name={"email"}
