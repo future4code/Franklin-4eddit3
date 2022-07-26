@@ -1,19 +1,17 @@
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
-import { useAppNavigate } from "../../routes/coordinator";
 import { Header } from "../../components/Header/Header";
+import { StyleContainer, StyleTitle } from "./styled";
 
 const SignUpPage = () => {
-    const { goToFeedPage } = useAppNavigate();
-
-    return (
-        <>
-            <Header
-            disableButtonLogout={true}
-            />
-            <SignUpForm/>
-            <button onClick={() => { goToFeedPage() }}>Feed Page</button>
-        </>
-    );
-}
+  return (
+    <div>
+      <Header disableButtonLogout={true} />
+      <StyleContainer>
+        <StyleTitle>Olá, boas vindas ao LabEddit ;)</StyleTitle>
+        <SignUpForm />
+      </StyleContainer>
+    </div>
+  );
+};
 
 export default SignUpPage;
