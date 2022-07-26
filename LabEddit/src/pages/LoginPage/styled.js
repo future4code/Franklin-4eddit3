@@ -6,6 +6,7 @@ export const StyleContainer = styled.div`
     align-items: center;
     margin: auto;
     margin-top: 120px;
+    margin-right: 10px;
 `
 
 export const StyleImg = styled.img`
@@ -30,6 +31,7 @@ export const StyleTitle = styled.h1`
     font-family: sans-serif;
     color: #373737;
     font-size: 29px;
+    margin-top: 15px;
 
 `
 
@@ -38,4 +40,5 @@ export const StyleParagraph = styled.p`
     font-size: 16px;
     color: #373737;
     font-family: sans-serif;
+    margin-top: 15px;
 `

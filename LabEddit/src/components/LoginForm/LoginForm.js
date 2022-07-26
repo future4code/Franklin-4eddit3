@@ -3,16 +3,32 @@ import React from "react";
 import { StyleInput } from "./styled";
 import { StyleButton } from './styled'
 import { StyleDivInput } from './styled'
+import swal from "sweetalert";
+import axios from "axios";
+import { BASE_URL } from "../../constants/urls";
+import { useAppNavigate } from "../../routes/coordinator";
 
 function LoginForm() {
     const [form, handleInputChange, clear] = useForm({ email: "", password: "" })
+    const { goToFeedPage } = useAppNavigate();
 
     const onSubmitForm = (event) => {
-        event.preventDefault()
-        console.log(form)
-        clear();
-    }
 
+        event.preventDefault()
+
+        axios.post(`${BASE_URL}/users/login`, form)           
+        
+        .then ((response) => {   
+            swal("Login realizado com sucesso")
+            console.log(form)
+            clear();
+            goToFeedPage()
+        })
+        .catch ((error) => {
+            swal('Usuário sem cadastro. Tente novamente') 
+        })
+    }
+        
     return (
         <div>
             <form onSubmit={onSubmitForm}>
