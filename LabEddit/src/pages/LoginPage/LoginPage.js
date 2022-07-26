@@ -1,8 +1,8 @@
 import { useAppNavigate } from "../../routes/coordinator";
 import LoginForm from "../../components/LoginForm/LoginForm";
-import Logo from '../../assets/logo.png'
-import {StyleButton} from './styled'
-import { StyleImg, StyleContainer, StyleTitle, StyleParagraph  } from "./styled";
+import Logo from "../../assets/logo.svg";
+import { StyleButton, StyleLine } from "./styled";
+import { StyleImg, StyleContainer, StyleTitle, StyleParagraph } from "./styled";
 
 const LoginPage = () => {
   const { goToSignUpPage } = useAppNavigate();
@@ -13,12 +13,14 @@ const LoginPage = () => {
       <StyleTitle>LabEddit</StyleTitle>
       <StyleParagraph>O projeto de rede social da Labenu</StyleParagraph>
       <LoginForm />
-      <div>
-        <StyleButton
-          onClick={() => { goToSignUpPage();}}>
-          Crie uma conta!
-        </StyleButton>
-      </div>
+      <StyleLine />
+      <StyleButton
+        onClick={() => {
+          goToSignUpPage();
+        }}
+      >
+        Crie uma conta!
+      </StyleButton>
     </StyleContainer>
   );
 };
