@@ -11,11 +11,22 @@ export const PostPageContainer = styled.div`
 export const StyleButton = styled.button`
   width: 365px;
   height: 51px;
+  background: linear-gradient(90deg, #ff6489 0%, #f9b24e 100%);
   border-radius: 27px;
-  border: 2px solid #fe7e02;
-  background-color: #fff;
-  color: #fe7e02;
+  border: none;
+  color: #fff;
   font-weight: 700;
-  margin-top: 13px;
+  margin-top: 20px;
   font-size: 15px;
 `;
+
+export const StyleTextArea = styled.textarea`
+  background-color: #EDEDED;
+  width: 365px;
+  height: 131px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-left: 5px;
+
+`

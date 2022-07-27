@@ -1,6 +1,6 @@
 import { useAppNavigate } from "../../routes/coordinator";
 import { Header } from "../../components/Header/Header";
-import { PostPageContainer} from "./styled";
+import { PostPageContainer, StyleButton, StyleTextArea} from "./styled";
 import PostCard from "../../components/PostCard/PostCard";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { useParams } from "react-router-dom";
@@ -20,8 +20,8 @@ const PostPage = () => {
 
                 <PostCard resposta = {false}/>
 
-                <textarea cols="30" rows="10" placeholder="Adicionar comentário" required></textarea>
-                <button>Responder</button>
+                <StyleTextArea cols="30" rows="10" placeholder="Adicionar comentário" required></StyleTextArea>
+                <StyleButton>Responder</StyleButton>
 
                 <hr />
                 

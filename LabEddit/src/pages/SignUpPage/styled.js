@@ -10,7 +10,6 @@ export const StyleContainer = styled.div`
 `;
 
 export const StyleTitle = styled.h1`
-  font-family: sans-serif;
   color: #373737;
   font-size: 29px;
   margin-top: 15px;
