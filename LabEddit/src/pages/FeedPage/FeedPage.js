@@ -5,6 +5,7 @@ import useRequestData from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls";
 import useProtectedPage from "../../hooks/useProtectedPage"; 
 import PostCard from "../../components/PostCard/PostCard";
+import { StyleContainerPage } from "./styled";
 
 const FeedPage = () => {
 
@@ -30,9 +31,13 @@ const FeedPage = () => {
     
   return (
     <div>
-        <Header/>
-        {postsCards}
-      <button onClick={() => goToPostPage()}>Post Page </button>
+        <div>
+          <Header/>
+        </div>
+        <StyleContainerPage>
+          {postsCards}
+          <button onClick={() => goToPostPage()}>Post Page </button>
+        </StyleContainerPage>
     </div>
   )
 }
