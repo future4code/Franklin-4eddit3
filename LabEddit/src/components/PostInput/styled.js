@@ -8,6 +8,7 @@ export const StyleInput = styled.textarea`
   background-color: #ededed;
   padding: 12px;
   margin: 10px;
+  resize: none;
 `;
 
 export const StyleLine = styled.hr`

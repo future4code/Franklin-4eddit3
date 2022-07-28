@@ -1,30 +1,63 @@
-import { PostCardContainer, StyleVote, StyleParagraphEnviado, StyleTextPost, StyleDivArrow, StyleImgArrow, StyleDivComentarios, StyleContainerIcons, StyleNumbers } from "./styled";
-import SetaParaCima from '../../assets/seta-pra-cima.png'
-import SetaParaBaixo from '../../assets/seta-pra-baixo.png'
-import ComentarioIcone from '../../assets/comentario-icone.png'
+import {
+  PostCardContainer,
+  StyleVote,
+  StyleParagraphEnviado,
+  StyleTextPost,
+  StyleDivArrow,
+  StyleImgArrow,
+  StyleDivComentarios,
+  StyleContainerIcons,
+  StyleNumbers,
+} from "./styled";
+import SetaParaCima from "../../assets/seta-pra-cima.png";
+import SetaParaBaixo from "../../assets/seta-pra-baixo.png";
+import ComentarioIcone from "../../assets/comentario-icone.png";
 import useProtectedPage from "../../hooks/useProtectedPage";
 
 const PostCard = (props) => {
-    useProtectedPage()
-    return (
-        <PostCardContainer onClick={props.onClick}>
-            <StyleParagraphEnviado>Enviado por: @{props.userName}</StyleParagraphEnviado>
-            <StyleTextPost>{props.body}</StyleTextPost>
-            <StyleVote>
-                <StyleContainerIcons>
-                <StyleDivArrow>
-                    <StyleImgArrow src={SetaParaCima}></StyleImgArrow>
-                    <StyleNumbers>{props.voteSum}</StyleNumbers>
-                    <StyleImgArrow src={SetaParaBaixo}></StyleImgArrow>
-                </StyleDivArrow>
-                <StyleDivComentarios>
-                    {props.resposta === true ? <span></span> : <img src={ComentarioIcone}></img>} 
-                    <StyleNumbers>{props.commentCount}</StyleNumbers>
-                </StyleDivComentarios>    
-                </StyleContainerIcons>                       
-            </StyleVote>
-        </PostCardContainer>
-    )
-}
+  useProtectedPage();
+
+  const commentCounter = () => {
+    if (props.commentCount === null) {
+      return "0";
+    } else {
+      return props.commentCount;
+    }
+  };
+
+  const voteCounter = () => {
+    if (props.voteSum === null) {
+      return "0";
+    } else {
+      return props.voteSum;
+    }
+  };
+
+  return (
+    <PostCardContainer onClick={props.onClick}>
+      <StyleParagraphEnviado>
+        Enviado por: @{props.userName}
+      </StyleParagraphEnviado>
+      <StyleTextPost>{props.body}</StyleTextPost>
+      <StyleVote>
+        <StyleContainerIcons>
+          <StyleDivArrow>
+            <StyleImgArrow src={SetaParaCima}></StyleImgArrow>
+            <StyleNumbers>{voteCounter()}</StyleNumbers>
+            <StyleImgArrow src={SetaParaBaixo}></StyleImgArrow>
+          </StyleDivArrow>
+          <StyleDivComentarios>
+            {props.resposta === true ? (
+              <span></span>
+            ) : (
+              <img src={ComentarioIcone}></img>
+            )}
+            <StyleNumbers>{commentCounter()}</StyleNumbers>
+          </StyleDivComentarios>
+        </StyleContainerIcons>
+      </StyleVote>
+    </PostCardContainer>
+  );
+};
 
 export default PostCard;

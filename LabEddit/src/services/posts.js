@@ -13,3 +13,16 @@ export const createPost = async (body) => {
     console.log("deu erro, tente novamente");
   }
 };
+
+export const loadPosts = async () => {
+  try {
+    const res = await axios.get(`${BASE_URL}/posts/`, {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    });
+    return res.data;
+  } catch (e) {
+    console.log(e);
+  }
+};

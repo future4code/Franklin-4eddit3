@@ -8,10 +8,15 @@ import { BASE_URL } from "../../constants/urls";
 import useRequestData from "../../hooks/useRequestData";
 import { useEffect } from "react";
 import { PostInput } from "../../components/PostInput/PostInput";
+import useForm from "../../hooks/useForm";
+import { createComment } from "../../services/comments";
 
 const PostPage = () => {
   useProtectedPage();
   const { goToFeedPage } = useAppNavigate();
+  const [form, handleInputChange, clear] = useForm({
+    body: "",
+  });
   const params = useParams();
 
   const post = useRequestData([], `${BASE_URL}/posts`);
@@ -48,6 +53,12 @@ const PostPage = () => {
     );
   });
 
+  const onSubmitForm = (event) => {
+    event.preventDefault();
+    createComment({ postId: params.id, body: form });
+    clear();
+  };
+
   return (
     <div>
       <Header />
@@ -60,7 +71,14 @@ const PostPage = () => {
           Feed
         </button>
         {renderPost}
-        <PostInput placeholder="Adicionar comentário" buttonText="Responder" />
+        <PostInput
+          name={"body"}
+          value={form.body}
+          onChange={handleInputChange}
+          onClick={onSubmitForm}
+          placeholder={"Adicionar comentário"}
+          buttonText="Responder"
+        />
         {renderComents}
         <hr />
       </PostPageContainer>
