@@ -1,35 +1,37 @@
 import { useAppNavigate } from "../../routes/coordinator";
 import { Header } from "../../components/Header/Header";
-import { PostPageContainer, StyleButton, StyleTextArea} from "./styled";
+import { PostPageContainer } from "./styled";
 import PostCard from "../../components/PostCard/PostCard";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { useParams } from "react-router-dom";
-
+import { PostInput } from "../../components/PostInput/PostInput";
 
 const PostPage = () => {
-    useProtectedPage()
-    const { goToFeedPage } = useAppNavigate();
-    const params =useParams()
-    console.log(params)
+  useProtectedPage();
+  const { goToFeedPage } = useAppNavigate();
+  const params = useParams();
+  console.log(params);
 
-    return (
-        <>
-            <Header />
-            <PostPageContainer>
-                <button onClick={() => { goToFeedPage() }} >Feed</button>
+  return (
+    <div>
+      <Header />
+      <PostPageContainer>
+        <button
+          onClick={() => {
+            goToFeedPage();
+          }}
+        >
+          Feed
+        </button>
 
-                <PostCard resposta = {false}/>
+        <PostCard resposta={false} />
 
-                <StyleTextArea cols="30" rows="10" placeholder="Adicionar comentário" required></StyleTextArea>
-                <StyleButton>Responder</StyleButton>
+        <PostInput placeholder="Adicionar comentário" buttonText="Responder" />
 
-                <hr />
-                
-                <PostCard resposta = {true}/>
-
-            </PostPageContainer>
-        </>
-    );
-}
+        <PostCard resposta={true} />
+      </PostPageContainer>
+    </div>
+  );
+};
 
 export default PostPage;

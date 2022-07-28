@@ -3,9 +3,9 @@ import swal from "sweetalert";
 import { BASE_URL } from "../../constants/urls";
 import useForm from "../../hooks/useForm";
 import { useAppNavigate } from "../../routes/coordinator";
+import { Button } from "../Button/Button";
 import {
   StyleInput,
-  StyleButton,
   StyleDivInput,
   StyleFormDiv,
   StylePoliticsContainer,
@@ -22,13 +22,13 @@ function SignUpForm() {
     password: "",
   });
   const { goToFeedPage } = useAppNavigate();
-  
+
   const onSubmitForm = (event) => {
     event.preventDefault();
     axios
       .post(`${BASE_URL}/users/signup`, form)
       .then((response) => {
-        localStorage.setItem('token', response.data.token)
+        localStorage.setItem("token", response.data.token);
         swal("Cadastro realizado com sucesso");
         clear();
         goToFeedPage();
@@ -84,7 +84,7 @@ function SignUpForm() {
               </StyleParagraph>
             </StyleCheckboxContainer>
           </StylePoliticsContainer>
-          <StyleButton type="submit">Cadastrar</StyleButton>
+          <Button type="submit" text="Cadastrar" />
         </StyleFormDiv>
       </form>
     </div>
