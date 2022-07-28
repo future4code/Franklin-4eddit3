@@ -36,7 +36,7 @@ const FeedPage = () => {
         </div>
         <StyleContainerPage>
           {postsCards}
-          <button onClick={() => goToPostPage()}>Post Page </button>
+          <button onClick={() => goToPostPage()}>Post Page</button>
         </StyleContainerPage>
     </div>
   )
