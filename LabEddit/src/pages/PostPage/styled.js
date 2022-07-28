@@ -5,5 +5,4 @@ export const PostPageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 120px;
 `;
