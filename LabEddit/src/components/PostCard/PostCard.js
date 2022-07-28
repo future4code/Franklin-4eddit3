@@ -2,9 +2,10 @@ import { PostCardContainer, StyleVote, StyleParagraphEnviado, StyleTextPost, Sty
 import SetaParaCima from '../../assets/seta-pra-cima.png'
 import SetaParaBaixo from '../../assets/seta-pra-baixo.png'
 import ComentarioIcone from '../../assets/comentario-icone.png'
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 const PostCard = (props) => {
-
+    useProtectedPage()
     return (
         <PostCardContainer onClick={props.onClick}>
             <StyleParagraphEnviado>Enviado por: @{props.userName}</StyleParagraphEnviado>
