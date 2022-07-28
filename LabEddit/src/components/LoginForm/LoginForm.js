@@ -1,12 +1,12 @@
 import useForm from "../../hooks/useForm";
 import React from "react";
-import { StyleFormDiv, StyleInput } from "./styled";
-import { StyleButton } from "./styled";
+import { StyleInput } from "./styled";
 import { StyleDivInput } from "./styled";
 import swal from "sweetalert";
 import axios from "axios";
 import { BASE_URL } from "../../constants/urls";
 import { useAppNavigate } from "../../routes/coordinator";
+import { Button } from "../Button/Button";
 
 function LoginForm() {
   const [form, handleInputChange, clear] = useForm({ email: "", password: "" });
@@ -17,7 +17,7 @@ function LoginForm() {
     axios
       .post(`${BASE_URL}/users/login`, form)
       .then((response) => {
-        localStorage.setItem('token', response.data.token)
+        localStorage.setItem("token", response.data.token);
         swal("Login realizado com sucesso");
         clear();
         goToFeedPage();
@@ -50,9 +50,7 @@ function LoginForm() {
             type={"password"}
           />
         </StyleDivInput>
-        <StyleFormDiv>
-          <StyleButton type="submit">Continuar</StyleButton>
-        </StyleFormDiv>
+        <Button type="submit" text="Continuar" />
       </form>
     </div>
   );

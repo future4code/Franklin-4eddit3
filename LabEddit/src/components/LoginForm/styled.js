@@ -36,15 +36,3 @@ export const StyleInput = styled.input`
     }
   }
 `;
-
-export const StyleButton = styled.button`
-  width: 365px;
-  height: 51px;
-  background: linear-gradient(90deg, #ff6489 0%, #f9b24e 100%);
-  border-radius: 27px;
-  border: none;
-  color: #fff;
-  font-weight: 700;
-  margin-top: 35px;
-  font-size: 15px;
-`;
