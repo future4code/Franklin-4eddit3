@@ -1,18 +1,13 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BASE_URL } from "../constants/urls";
-import { createPost, loadPosts } from "../services/posts";
+import useRequestData from "../hooks/useRequestData";
+import { createPost } from "../services/posts";
 
 export const FeedContext = React.createContext();
-
 export const FeedContextProvider = (props) => {
-  const [posts, setPosts] = useState();
+  const [selectedPost, setSelectedPost] = useState();
 
-  useEffect(() => {
-    loadPosts();
-    // console.log(loadPosts);
-    setPosts(loadPosts);
-  }, []);
+  const posts = useRequestData([], `${BASE_URL}/posts`);
 
   //   const newPost = async (props) => {
   //     const response = await createPost(props);
@@ -20,7 +15,7 @@ export const FeedContextProvider = (props) => {
   //   };
 
   return (
-    <FeedContext.Provider value={{ posts, setPosts }}>
+    <FeedContext.Provider value={{ posts, setSelectedPost, selectedPost }}>
       {props.children}
     </FeedContext.Provider>
   );

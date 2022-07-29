@@ -6,10 +6,11 @@ import useProtectedPage from "../../hooks/useProtectedPage";
 import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../constants/urls";
 import useRequestData from "../../hooks/useRequestData";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { PostInput } from "../../components/PostInput/PostInput";
 import useForm from "../../hooks/useForm";
 import { createComment } from "../../services/comments";
+import { FeedContext } from "../../context/feedContext";
 
 const PostPage = () => {
   useProtectedPage();
@@ -18,28 +19,12 @@ const PostPage = () => {
     body: "",
   });
   const params = useParams();
-
-  const post = useRequestData([], `${BASE_URL}/posts`);
+  const { selectedPost } = React.useContext(FeedContext);
 
   const postsComents = useRequestData(
     [],
     `${BASE_URL}/posts/${params.id}/comments`
   );
-
-  useEffect(() => {}, [post, params, postsComents]);
-  const renderPost = post?.map((post) => {
-    if (post.id === params.id) {
-      return (
-        <PostCard
-          key={post.id}
-          body={post.body}
-          userName={post.username}
-          voteSum={post.voteSum}
-          commentCount={post.commentCount}
-        />
-      );
-    }
-  });
 
   const renderComents = postsComents.map((post) => {
     return (
@@ -70,7 +55,13 @@ const PostPage = () => {
         >
           Feed
         </button>
-        {renderPost}
+        <PostCard
+          key={selectedPost.id}
+          body={selectedPost.body}
+          userName={selectedPost.username}
+          voteSum={selectedPost.voteSum}
+          commentCount={selectedPost.commentCount}
+        />
         <PostInput
           name={"body"}
           value={form.body}

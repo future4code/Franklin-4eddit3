@@ -20,7 +20,14 @@ export const Router = () => {
           }
         />
         <Route path="signup" element={<SignUpPage />} />
-        <Route path="post/:id" element={<PostPage />} />
+        <Route
+          path="post/:id"
+          element={
+            <FeedContextProvider>
+              <PostPage />
+            </FeedContextProvider>
+          }
+        />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
