@@ -14,37 +14,39 @@ import { FeedContext } from "../../context/feedContext";
 const FeedPage = () => {
   useProtectedPage();
   const { goToPostPage } = useAppNavigate();
-  const { posts, setSelectedPost } = React.useContext(FeedContext);
+  const { posts, setSelectedPost, postList, loadPosts } =
+    React.useContext(FeedContext);
 
   const [form, handleInputChange, clear] = useForm({
     title: " ",
     body: "",
   });
 
-  // const posts = useRequestData([], `${BASE_URL}/posts`);
-
   const onClickCard = (post) => {
     goToPostPage(post.id);
     setSelectedPost(post);
   };
 
-  const postsCards = posts.map((post) => {
-    return (
-      <PostCard
-        onClick={() => onClickCard(post)}
-        key={post.id}
-        body={post.body}
-        userName={post.username}
-        voteSum={post.voteSum}
-        commentCount={post.commentCount}
-      />
-    );
-  });
+  const postsCards =
+    postList &&
+    postList.map((post) => {
+      return (
+        <PostCard
+          onClick={() => onClickCard(post)}
+          key={post.id}
+          body={post.body}
+          userName={post.username}
+          voteSum={post.voteSum}
+          commentCount={post.commentCount}
+        />
+      );
+    });
 
   const onSubmitForm = (event) => {
     event.preventDefault();
     createPost(form);
     clear();
+    loadPosts();
   };
 
   return (

@@ -5,6 +5,7 @@ import PostPage from "../pages/PostPage/PostPage";
 import SignUpPage from "../pages/SignUpPage/SignUpPage";
 import { Routes, Route } from "react-router-dom";
 import { FeedContextProvider } from "../context/feedContext";
+import { CommentContextProvider } from "../context/postContext";
 
 export const Router = () => {
   return (
@@ -24,7 +25,9 @@ export const Router = () => {
           path="post/:id"
           element={
             <FeedContextProvider>
-              <PostPage />
+              <CommentContextProvider>
+                <PostPage />
+              </CommentContextProvider>
             </FeedContextProvider>
           }
         />

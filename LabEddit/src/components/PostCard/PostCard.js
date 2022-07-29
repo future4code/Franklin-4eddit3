@@ -38,11 +38,7 @@ const PostCard = (props) => {
       <StyleParagraphEnviado>
         Enviado por: @{props.userName}
       </StyleParagraphEnviado>
-      <StyleTextPost>
-        {props.body.length > 37
-          ? props.body.substring(0, 37) + "..."
-          : props.body}
-      </StyleTextPost>
+      <StyleTextPost>{props.body}</StyleTextPost>
       <StyleVote>
         <StyleContainerIcons>
           <StyleDivArrow>

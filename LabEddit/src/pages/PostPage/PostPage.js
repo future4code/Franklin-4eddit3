@@ -4,13 +4,12 @@ import { PostPageContainer } from "./styled";
 import PostCard from "../../components/PostCard/PostCard";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { useParams } from "react-router-dom";
-import { BASE_URL } from "../../constants/urls";
-import useRequestData from "../../hooks/useRequestData";
 import React, { useEffect } from "react";
 import { PostInput } from "../../components/PostInput/PostInput";
 import useForm from "../../hooks/useForm";
 import { createComment } from "../../services/comments";
 import { FeedContext } from "../../context/feedContext";
+import { CommentContext } from "../../context/postContext";
 
 const PostPage = () => {
   useProtectedPage();
@@ -20,13 +19,13 @@ const PostPage = () => {
   });
   const params = useParams();
   const { selectedPost } = React.useContext(FeedContext);
+  const { loadPosts, comments } = React.useContext(CommentContext);
 
-  const postsComents = useRequestData(
-    [],
-    `${BASE_URL}/posts/${params.id}/comments`
-  );
+  useEffect(() => {
+    loadPosts(params.id);
+  });
 
-  const renderComents = postsComents.map((post) => {
+  const renderComents = comments?.map((post) => {
     return (
       <PostCard
         key={post.id}
@@ -42,6 +41,7 @@ const PostPage = () => {
     event.preventDefault();
     createComment({ postId: params.id, body: form });
     clear();
+    loadPosts(params.id);
   };
 
   return (

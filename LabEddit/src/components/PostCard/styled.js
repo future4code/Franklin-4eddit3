@@ -31,6 +31,8 @@ export const StyleTextPost = styled.p`
   font-family: 13px;
   font-weight: 500;
   margin: 15px 0;
+
+  word-wrap: break-word;
 `;
 
 export const StyleDivArrow = styled.p`
