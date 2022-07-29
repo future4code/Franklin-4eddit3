@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header/Header";
 import { useAppNavigate } from "../../routes/coordinator";
 import useRequestData from "../../hooks/useRequestData";
@@ -14,8 +14,10 @@ import { FeedContext } from "../../context/feedContext";
 const FeedPage = () => {
   useProtectedPage();
   const { goToPostPage } = useAppNavigate();
-  const { posts, setSelectedPost, postList, loadPosts } =
+  const { isLoading, setSelectedPost, postList, loadPosts } =
     React.useContext(FeedContext);
+  var [timer, setTimer] = useState(0);
+  const [renderLoading, setRenderLoading] = useState("carregando");
 
   const [form, handleInputChange, clear] = useForm({
     title: " ",
@@ -49,6 +51,28 @@ const FeedPage = () => {
     loadPosts();
   };
 
+  const loadAnimation = () => {
+    if (timer === 0) {
+      setRenderLoading("carregando");
+      timer++;
+    } else if (timer === 1) {
+      setRenderLoading("carregando.");
+      timer++;
+    } else if (timer === 2) {
+      setRenderLoading("carregando..");
+      timer++;
+    } else if (timer === 3) {
+      setRenderLoading("carregando...");
+      timer = 0;
+    }
+  };
+
+  useEffect(() => {
+    setInterval(() => {
+      loadAnimation();
+    }, 600);
+  }, []);
+
   return (
     <div>
       <div>
@@ -65,8 +89,7 @@ const FeedPage = () => {
             buttonText="Postar"
           />
         </StyleInputBox>
-        {postsCards}
-        <button onClick={() => goToPostPage()}>Post Page </button>
+        {isLoading ? renderLoading : postsCards}
       </StyleContainerPage>
     </div>
   );
