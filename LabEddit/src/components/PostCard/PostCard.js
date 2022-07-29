@@ -38,7 +38,11 @@ const PostCard = (props) => {
       <StyleParagraphEnviado>
         Enviado por: @{props.userName}
       </StyleParagraphEnviado>
-      <StyleTextPost>{props.body}</StyleTextPost>
+      <StyleTextPost>
+        {props.body.length > 37
+          ? props.body.substring(0, 37) + "..."
+          : props.body}
+      </StyleTextPost>
       <StyleVote>
         <StyleContainerIcons>
           <StyleDivArrow>
@@ -46,14 +50,15 @@ const PostCard = (props) => {
             <StyleNumbers>{voteCounter()}</StyleNumbers>
             <StyleImgArrow src={SetaParaBaixo}></StyleImgArrow>
           </StyleDivArrow>
-          <StyleDivComentarios>
-            {props.resposta === true ? (
-              <span></span>
-            ) : (
+
+          {props.resposta === true ? (
+            <span></span>
+          ) : (
+            <StyleDivComentarios>
               <img src={ComentarioIcone}></img>
-            )}
-            <StyleNumbers>{commentCounter()}</StyleNumbers>
-          </StyleDivComentarios>
+              <StyleNumbers>{commentCounter()}</StyleNumbers>
+            </StyleDivComentarios>
+          )}
         </StyleContainerIcons>
       </StyleVote>
     </PostCardContainer>

@@ -9,26 +9,29 @@ import { StyleContainerPage, StyleInputBox } from "./styled";
 import { PostInput } from "../../components/PostInput/PostInput";
 import { createPost } from "../../services/posts";
 import useForm from "../../hooks/useForm";
+import { FeedContext } from "../../context/feedContext";
 
 const FeedPage = () => {
   useProtectedPage();
   const { goToPostPage } = useAppNavigate();
+  const { posts, setSelectedPost } = React.useContext(FeedContext);
 
   const [form, handleInputChange, clear] = useForm({
     title: " ",
     body: "",
   });
 
-  const posts = useRequestData([], `${BASE_URL}/posts`);
+  // const posts = useRequestData([], `${BASE_URL}/posts`);
 
-  const onClickCard = (id) => {
-    goToPostPage(id);
+  const onClickCard = (post) => {
+    goToPostPage(post.id);
+    setSelectedPost(post);
   };
 
   const postsCards = posts.map((post) => {
     return (
       <PostCard
-        onClick={() => onClickCard(post.id)}
+        onClick={() => onClickCard(post)}
         key={post.id}
         body={post.body}
         userName={post.username}
