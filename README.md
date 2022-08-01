@@ -1,39 +1,43 @@
-## Exercício da Semana:
+# Labeddit
+LINK SURGE> labbedit-3.surge.sh
+## Integrantes:
 
-Essa semana, vocês irão implementar uma rede social! Já fizemos vários protótipos de redes sociais, mas nenhuma delas realmente funcional. A ideia agora é fazer uma rede real, com cadastro, login, posts, likes e comentários. Para isso, iremos nos basear no **[reddit.com](https://reddit.com).**
+- Danyelle Amarante Candido
+- Maiara Cruz Ferreira dos Santos
+- Pedro Henrique Durand Reis
+- Thiago Henrique Siebri Dutra
+- Victor Ramon Firmo Moreira
 
-A rede social terá 4 páginas:
+## Notion do grupo com board de tarefas
 
-### Página de login
+Para facilitar a divisão de atividades entre os componentes do grupo, foi criada uma página no notion contendo os principais links e materiais foi criada:
+- [Notion do grupo](https://www.notion.so/Notion-do-Grupo-abf4e9d7191a4491a46b48a49dba5bde)
 
-![1](https://user-images.githubusercontent.com/3521896/77802249-3ada3280-7059-11ea-9da7-5762c6daf97d.png)
+## O que funciona:
+- Navegação;
+- Login;
+- Cadastro;
+- Emissão de posts;
+- Visualização dos posts;
 
-A página de login possui dois campos de texto: email e senha. O comportamento será o mesmo da página de login feita semana passada. Ao fazer o login, o usuário deverá ser redirecionado para a página de feed.
+## O que não funciona:
+- Renderização dinâmica de novos posts e comentários;
+- Loading nas páginas;
+- Carregamento do post antes do comentário;
+- Alguns testes não foram implementados;
 
-A página possui também um botão "Cadastrar", que leva o usuário para a página de cadastro.
+## Evidência do funcionamento da aplicação
 
-### Página de cadastro
-
-![2](https://user-images.githubusercontent.com/3521896/77802253-3ca3f600-7059-11ea-8bc9-e43db687e62c.png)
-
-A página de cadastro possui 3 campos: nome de usuário, email e senha. O endpoint de cadastro retornará as mesmas informações do endpoint de login. Portanto, após cadastrar, o usuário deverá ser redirecionado para a página de feed, já estando logado (ou seja, com o token salvo no LocalStorage).
-
-### Página de feed (lista de posts)
-
-![3](https://user-images.githubusercontent.com/3521896/77802257-3e6db980-7059-11ea-9978-cc4612e444a1.png)
-
-A página de feed deverá mostrar todos os posts, além de um formulário para a criação de post. O formulário possui apenas o campo de texto. Cada post mostrará o nome de usuário que postou, o texto do post, o número de votos (positivo ou negativo) e o número de comentários. Caso o usuário tenha votado positiva ou negativamente, isso deverá estar indicado. Todas essa informações serão fornecidas pela API.
-
-Quando o usuário clicar em um post, ele deverá ser redirecionado para a página do respectivo post. 
-
-Quando um usuário clicar em votar (positiva ou negativamente), uma requisição deverá ser feita indicando a "direção" do voto. Um voto positivo é indicado com o número `1`. Um voto negativo é indicado com o número `-1`. Para remover um voto, a direção deve ser `0`.
-
-Essa página só pode ser acessada por um usuário logado. Caso o usuário não esteja logado, deverá ser redirecionado para a página de login.
-
-### Página de post
-
-![4](https://user-images.githubusercontent.com/3521896/77802261-40377d00-7059-11ea-8f65-2b305bf5e6f8.png)
-
-A página de um post mostrará o mesmo card de post da página de feed, com o usuário, texto, curtidas e número de comentários. Abaixo, terá um formulário para criação de comentários e os cards de comentários. A estrutura é muito similar à do post, mas comentários não possuem outros comentários dentro deles. A lógica de votos é a mesma do post.
-
-Essa página só pode ser acessada por um usuário logado. Caso o usuário não esteja logado, deverá ser redirecionado para a página de login.
+- LoginPage
+  - ![image](https://user-images.githubusercontent.com/98703838/181748518-0d702435-d541-42c6-a3ab-ec0898ccb269.png)
+  - ![image](https://user-images.githubusercontent.com/98703838/181748692-ffbb3b9c-5257-4149-9ee9-0be84668adb1.png)
+  - ![image](https://user-images.githubusercontent.com/98703838/181748724-78cd55db-4fab-4b80-9825-213be29aaef2.png)
+- FeedPage
+  - ![image](https://user-images.githubusercontent.com/98703838/181748569-c00d1a5e-9807-4e36-b04e-af2e6cc61357.png)
+- PostPage
+  - ![image](https://user-images.githubusercontent.com/98703838/181748960-b1001512-63bb-4fa9-8491-e7f5cc3a30cf.png)
+- SignUpPage
+  - ![image](https://user-images.githubusercontent.com/98703838/181748786-25388902-04ca-4850-8b50-e7324b5f4ac7.png)
+  - ![image](https://user-images.githubusercontent.com/98703838/181748877-5ae433c1-14e5-478d-ae4c-10e6e562e986.png)
+- Coverage de Testes
+  - ![image](https://user-images.githubusercontent.com/98703838/181755402-38e1664b-4cea-4752-8b09-fe3497d45d29.png)
